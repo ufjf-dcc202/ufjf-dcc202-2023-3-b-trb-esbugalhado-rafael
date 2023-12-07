@@ -12,6 +12,8 @@ let jogadorAtual = jogador;
 
 // Funções 
 
+
+// -Calcular Pontos
 function calcularPontos (tabuleiro, valorDaColuna) {
     const valorDaColuna = [tabuleiro[valorDaColuna], tabuleiro[valorDaColuna + 3], tabuleiro[valorDaColuna + 6]];
     const mapeamento = valorDaColuna.reduce((map, valor) => {
