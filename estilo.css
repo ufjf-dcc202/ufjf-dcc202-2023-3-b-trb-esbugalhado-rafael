@@ -1,0 +1,15 @@
+.jogador {
+    float: left;
+    margin-right: 20px;
+}
+
+.botOponente{
+    float: right;
+    margin-left: 20px;
+}
+.tabuleiro {
+    width: 20px;
+    height: 20px;
+}
+
+
