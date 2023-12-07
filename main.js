@@ -15,6 +15,9 @@ let jogadorAtual = jogador;
 document.getElementById('rodarDado').addEventListener('click', () => {
     const valorDoDado = Math.floor(Math.random() * 6) + 1;
     console.log('Você rolou no dado: ${valorDoDado}');
+
+    posicionarDado(valorDoDado, oponente);
+
 });
 
 // Funções 
@@ -37,6 +40,15 @@ function posicionarDado (valorDoDado, jogador) {
     } else {
         alert('Essa coluna já foi preenchida. Escolha outra.');
     }
+}
+
+// -Bot oponente
+
+function acaoDoOponente(){
+    const valorDoDado = Math.floor(Math.random() * 6) + 1;
+    console.log('O oponente rodou no dado: ${valorDoDado}');
+
+    posicionarDado(valorDoDado, oponente);
 }
 
 // -Calcular Pontos
