@@ -14,7 +14,7 @@ let jogadorAtual = jogador;
 
 document.getElementById('rodarDado').addEventListener('click', () => {
     const valorDoDado = Math.floor(Math.random() * 6) + 1;
-    console.log('Você rolou no dado: ${valorDoDado}');
+    console.log("Você rolou no dado: ${valorDoDado}");
 
     posicionarDado(valorDoDado, oponente);
 
@@ -32,7 +32,7 @@ document.getElementById('rodarDado').addEventListener('click', () => {
 // -Colocar Dados nas Colunas
 
 function posicionarDado (valorDoDado, jogador) {
-    const valorDaPosicao = prompt('Escolha uma coluna (1-3):') - 1;
+    const valorDaPosicao = prompt('Seu valor é ${valorDoDado}. Escolha uma coluna (1-3):') - 1;
 
     if (jogador.tabuleiro[valorDaPosicao] === null){
         jogador.tabuleiro[valorDaPosicao] = valorDoDado;
