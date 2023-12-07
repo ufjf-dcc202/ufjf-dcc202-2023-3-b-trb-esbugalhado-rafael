@@ -10,6 +10,7 @@ const oponente = {
 
 let jogadorAtual = jogador;
 
+
 // Rolagem de Dados
 
 document.getElementById('rodarDado').addEventListener('click', () => {
@@ -38,8 +39,53 @@ function rolarDado(){
 
 // -Colocar Dados nas Colunas
 
+function encontrarEspaco (tabuleiro, escolherColuna){
+    for (let i = escolherColuna; i < tabuleiro.lenght; i+=3){
+        if (tabuleiro[i] === null){
+            return i;
+        }
+    }
+    return -1;
+}
+
 function posicionarDado (valorDoDado, jogador) {
-    const escolherColuna = prompt('Seu valor é ' +valorDoDado +'. Escolha uma coluna (1-3):') - 1;
+    let escolherColuna;
+
+    do {
+        escolherColuna = prompt('Seu valor é ' +valorDoDado+ '. Escolha uma coluna (1-3):') -1;
+        
+        if (escolherColuna >= 0 && escolherColuna <=2 && jogador.tabuleiro[escolherColuna] === null){
+            break;
+        } else {
+            alert('Escolha inválida ou coluna já preenchida. Escolha outra.');
+        }   
+    } while (true);
+
+    const espacoVazio = encontrarEspaco(jogador.tabuleiro, escolherColuna);
+
+    if (espacoVazio === -1){
+        alert('Coluna já preenchida. Escolha outra.');
+        return;
+    }
+
+    jogador.tabuleiro[espacoVazio] = valorDoDado;
+
+    oponente.tabuleiro = oponente.tabuleiro.map((valor,index) => (valor === valorDoDado && index % 3 === escolherColuna ? null : valor));
+    
+    jogador.pontosTotais += calcularPontos(jogador.tabuleiro, escolherColuna);
+    atualizarInterface();
+
+    if (checarGameOver(jogador)) {
+        checarGameOver(oponente);
+        checarVencedor(jogador, oponente);
+        resetarJogo();
+    } else {
+        jogadorAtual = jogador === jogador ? oponente : jogador; 
+    }
+}
+
+
+/*const escolherColuna = prompt('Seu valor é ' +valorDoDado +'. Escolha uma coluna (1-3):') - 1;
 
     if (jogador.tabuleiro[escolherColuna] === null){
         jogador.tabuleiro[escolherColuna] = valorDoDado;
@@ -53,8 +99,9 @@ function posicionarDado (valorDoDado, jogador) {
         atualizarInterface();
     } else {
         alert('Essa coluna já foi preenchida. Escolha outra.');
-    }
-}
+    }*/
+
+
 
 // -Bot oponente
 
@@ -138,8 +185,10 @@ function checarGameOver(jogador){
 function checarVencedor(jogador, oponente){
     if (jogador.pontosTotais > oponente.pontosTotais){
         alert('Você venceu com '+jogadorAtual.pontosTotais+' pontos.'); 
-    } else {
+    } else if (jogador.pontosTotais < oponente.pontosTotais){
         alert('O oponente venceu com '+jogadorAtual.pontosTotais+' pontos.');
+    } else {
+        alert('Empate!');
     }
 }
 
