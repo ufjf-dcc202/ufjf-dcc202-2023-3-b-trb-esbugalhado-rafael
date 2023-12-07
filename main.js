@@ -19,8 +19,28 @@ document.getElementById('rodarDado').addEventListener('click', () => {
 
 // Funções 
 
+// -Colocar Dados nas Colunas
+
+function posicionarDado (valorDoDado, jogador) {
+    const valorDaPosicao = prompt('Escolha uma coluna (1-3):') - 1;
+
+    if (jogador.tabuleiro[valorDaPosicao] === null){
+        jogador.tabuleiro[valorDaPosicao] = valorDoDado;
+
+        // Remover dado do adversario
+
+        oponente.tabuleiro = oponente.tabuleiro.map(valor => (valor === valorDoDado ? null : valor));
+
+        // Atualizando pontos
+        jogador.pontosTotais += calcularPontos(jogador.tabuleiro, valorDaPosicao);
+        atualizarInterface();
+    } else {
+        alert('Essa coluna já foi preenchida. Escolha outra.');
+    }
+}
 
 // -Calcular Pontos
+
 function calcularPontos (tabuleiro, valorDaPosicao) {
     const valorDaColuna = [tabuleiro[valorDaPosicao], tabuleiro[valorDaPosicao + 3], tabuleiro[valorDaPosicao + 6]];
     const mapeamento = valorDaColuna.reduce((map, valor) => {
