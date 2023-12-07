@@ -14,12 +14,12 @@ let jogadorAtual = jogador;
 
 document.getElementById('rodarDado').addEventListener('click', () => {
     const valorDoDado = rolarDado();
-    console.log('Você rolou no dado: ${valorDoDado}$');
+    console.log('Você rolou no dado: ' + valorDoDado);
 
     posicionarDado(valorDoDado, oponente);
 
     if (checarGameOver(jogadorAtual)){
-        alert('Você venceu com ${jogadorAtual.pontosTotais} pontos.');
+        alert('Você venceu com '+jogadorAtual.pontosTotais+' pontos.');
         resetarJogo();
     } else {
         jogadorAtual = oponente;
@@ -38,7 +38,7 @@ function rolarDado(){
 // -Colocar Dados nas Colunas
 
 function posicionarDado (valorDoDado, jogador) {
-    const valorDaPosicao = prompt('Seu valor é ${valorDoDado}. Escolha uma coluna (1-3):') - 1;
+    const valorDaPosicao = prompt('Seu valor é ' +valorDoDado +'. Escolha uma coluna (1-3):') - 1;
 
     if (jogador.tabuleiro[valorDaPosicao] === null){
         jogador.tabuleiro[valorDaPosicao] = valorDoDado;
@@ -64,7 +64,7 @@ function acaoDoOponente(){
     posicionarDado(valorDoDado, oponente);
 
     if (checarGameOver(oponente)){
-        alert('O oponente venceu com ${jogadorAtual.pontosTotais} pontos.');
+        alert('O oponente venceu com '+jogadorAtual.pontosTotais+' pontos.');
         resetarJogo();
     } else {
         jogadorAtual = jogador;
