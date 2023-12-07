@@ -7,9 +7,14 @@
     float: right;
     margin-left: 20px;
 }
+
 .tabuleiro {
     width: 20px;
     height: 20px;
+    border: 1px solid black;
+    display: grid;
 }
+
+
 
 
