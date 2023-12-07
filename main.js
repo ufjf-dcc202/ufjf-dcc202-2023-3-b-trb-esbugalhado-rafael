@@ -13,8 +13,8 @@ let jogadorAtual = jogador;
 // Rolagem de Dados
 
 document.getElementById('rodarDado').addEventListener('click', () => {
-    const valorDoDado = Math.floor(Math.random() * 6) + 1;
-    console.log("Você rolou no dado: ${valorDoDado}");
+    const valorDoDado = rolarDado();
+    console.log('Você rolou no dado: ${valorDoDado}$');
 
     posicionarDado(valorDoDado, oponente);
 
@@ -28,6 +28,12 @@ document.getElementById('rodarDado').addEventListener('click', () => {
 });
 
 // Funções 
+
+// - Rolar o dado
+
+function rolarDado(){
+    return Math.floor(Math.random()*6)+1;
+}
 
 // -Colocar Dados nas Colunas
 
@@ -52,7 +58,7 @@ function posicionarDado (valorDoDado, jogador) {
 // -Bot oponente
 
 function acaoDoOponente(){
-    const valorDoDado = Math.floor(Math.random() * 6) + 1;
+    const valorDoDado = rolarDado();
     console.log('O oponente rodou no dado: ${valorDoDado}');
 
     posicionarDado(valorDoDado, oponente);
