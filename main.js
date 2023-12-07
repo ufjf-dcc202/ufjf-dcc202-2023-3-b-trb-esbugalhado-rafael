@@ -19,7 +19,8 @@ document.getElementById('rodarDado').addEventListener('click', () => {
     posicionarDado(valorDoDado, oponente);
 
     if (checarGameOver(jogadorAtual)){
-        alert('Você venceu com '+jogadorAtual.pontosTotais+' pontos.');
+        checarGameOver(oponente);
+        checarVencedor(jogador, oponente);
         resetarJogo();
     } else {
         jogadorAtual = oponente;
@@ -38,17 +39,17 @@ function rolarDado(){
 // -Colocar Dados nas Colunas
 
 function posicionarDado (valorDoDado, jogador) {
-    const valorDaPosicao = prompt('Seu valor é ' +valorDoDado +'. Escolha uma coluna (1-3):') - 1;
+    const escolherColuna = prompt('Seu valor é ' +valorDoDado +'. Escolha uma coluna (1-3):') - 1;
 
-    if (jogador.tabuleiro[valorDaPosicao] === null){
-        jogador.tabuleiro[valorDaPosicao] = valorDoDado;
+    if (jogador.tabuleiro[escolherColuna] === null){
+        jogador.tabuleiro[escolherColuna] = valorDoDado;
 
         // Remover dado do adversario
 
         oponente.tabuleiro = oponente.tabuleiro.map(valor => (valor === valorDoDado ? null : valor));
 
         // Atualizando pontos
-        jogador.pontosTotais += calcularPontos(jogador.tabuleiro, valorDaPosicao);
+        jogador.pontosTotais += calcularPontos(jogador.tabuleiro, escolherColuna);
         atualizarInterface();
     } else {
         alert('Essa coluna já foi preenchida. Escolha outra.');
@@ -59,12 +60,22 @@ function posicionarDado (valorDoDado, jogador) {
 
 function acaoDoOponente(){
     const valorDoDado = rolarDado();
-    console.log('O oponente rodou no dado: ${valorDoDado}');
+    console.log('O oponente rodou no dado: '+valorDoDado);
 
-    posicionarDado(valorDoDado, oponente);
+    const colunasPossiveis = oponente.tabuleiro.reduce((colunas,valor,indice) => {
+        if (valor === null) {
+            colunas.push(indice);
+        }
+        return colunas;
+    }, []);
+
+    if (colunasPossiveis.lenght === 0){
+
+    }
 
     if (checarGameOver(oponente)){
-        alert('O oponente venceu com '+jogadorAtual.pontosTotais+' pontos.');
+        checarGameOver(jogador);
+        checarVencedor(jogador, oponente);
         resetarJogo();
     } else {
         jogadorAtual = jogador;
@@ -73,8 +84,8 @@ function acaoDoOponente(){
 
 // -Calcular Pontos
 
-function calcularPontos (tabuleiro, valorDaPosicao) {
-    const valorDaColuna = [tabuleiro[valorDaPosicao], tabuleiro[valorDaPosicao + 3], tabuleiro[valorDaPosicao + 6]];
+function calcularPontos (tabuleiro, escolherColuna) {
+    const valorDaColuna = [tabuleiro[escolherColuna], tabuleiro[escolherColuna + 3], tabuleiro[escolherColuna + 6]];
     const mapeamento = valorDaColuna.reduce((map, valor) => {
         if (valor !== null) {
             map[valor] = (map[valor]||0) +1;
@@ -122,6 +133,14 @@ function atualizarTabuleiro(jogador){
 
 function checarGameOver(jogador){
     return jogador.tabuleiro.every(valor => valor !==null);
+}
+
+function checarVencedor(jogador, oponente){
+    if (jogador.pontosTotais > oponente.pontosTotais){
+        alert('Você venceu com '+jogadorAtual.pontosTotais+' pontos.'); 
+    } else {
+        alert('O oponente venceu com '+jogadorAtual.pontosTotais+' pontos.');
+    }
 }
 
 function resetarJogo(){
