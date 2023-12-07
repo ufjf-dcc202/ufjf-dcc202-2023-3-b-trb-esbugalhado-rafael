@@ -16,7 +16,7 @@ document.getElementById('rodarDado').addEventListener('click', () => {
     const valorDoDado = rolarDado();
     console.log('Você rolou no dado: ' + valorDoDado);
 
-    posicionarDado(valorDoDado, oponente);
+    posicionarDado(valorDoDado, jogador);
 
     if (checarGameOver(jogadorAtual)){
         checarGameOver(oponente);
@@ -95,7 +95,7 @@ function calcularPontos (tabuleiro, escolherColuna) {
 
     let pontos = 0;
 
-    Object.keys(mapeamento).forEach(value => {
+    Object.keys(mapeamento).forEach(valor => {
         const contagem = mapeamento[valor];
 
         if (contagem === 1){
