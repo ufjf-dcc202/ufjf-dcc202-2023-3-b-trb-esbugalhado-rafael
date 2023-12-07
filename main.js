@@ -79,4 +79,27 @@ function calcularPontos (tabuleiro, valorDaPosicao) {
     return pontos;
 }
 
+// -Atualizando Interface
+
+function atualizarInterface(){
+    atualizarTabuleiro(jogador);
+    atualizarTabuleiro(oponente);
+}
+
+function atualizarTabuleiro(jogador){
+    const tab = document.getElementById(jogador === jogador ? 'tabuleiro' : 'tabOponente');
+    tab.innerHTML = '';
+
+    jogador.tabuleiro.forEach((valor, index) =>{
+        const celula = document.createElement('div');
+        celula.textContent = valor !== null ? valor : '';
+        tab.appendChild(celula);
+    });
+}
+
+
+// -Fim de Jogo e Reset
+
+
+
 
