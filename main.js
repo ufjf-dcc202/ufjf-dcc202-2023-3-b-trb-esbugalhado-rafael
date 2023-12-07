@@ -21,8 +21,8 @@ document.getElementById('rodarDado').addEventListener('click', () => {
 
 
 // -Calcular Pontos
-function calcularPontos (tabuleiro, valorDaColuna) {
-    const valorDaColuna = [tabuleiro[valorDaColuna], tabuleiro[valorDaColuna + 3], tabuleiro[valorDaColuna + 6]];
+function calcularPontos (tabuleiro, valorDaPosicao) {
+    const valorDaColuna = [tabuleiro[valorDaPosicao], tabuleiro[valorDaPosicao + 3], tabuleiro[valorDaPosicao + 6]];
     const mapeamento = valorDaColuna.reduce((map, valor) => {
         if (valor !== null) {
             map[valor] = (map[valor]||0) +1;
