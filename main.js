@@ -10,6 +10,13 @@ const oponente = {
 
 let jogadorAtual = jogador;
 
+// Rolagem de Dados
+
+document.getElementById('rodarDado').addEventListener('click', () => {
+    const valorDoDado = Math.floor(Math.random() * 6) + 1;
+    console.log('Você rolou no dado: ${valorDoDado}');
+});
+
 // Funções 
 
 
