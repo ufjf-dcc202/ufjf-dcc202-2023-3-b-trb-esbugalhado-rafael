@@ -18,6 +18,13 @@ document.getElementById('rodarDado').addEventListener('click', () => {
 
     posicionarDado(valorDoDado, oponente);
 
+    if (checarGameOver(jogadorAtual)){
+        alert('Você venceu com ${jogadorAtual.pontosTotais} pontos.');
+        resetarJogo();
+    } else {
+        jogadorAtual = oponente;
+        acaoDoOponente();
+    }
 });
 
 // Funções 
@@ -49,6 +56,13 @@ function acaoDoOponente(){
     console.log('O oponente rodou no dado: ${valorDoDado}');
 
     posicionarDado(valorDoDado, oponente);
+
+    if (checarGameOver(oponente)){
+        alert('O oponente venceu com ${jogadorAtual.pontosTotais} pontos.');
+        resetarJogo();
+    } else {
+        jogadorAtual = jogador;
+    }
 }
 
 // -Calcular Pontos
@@ -100,6 +114,17 @@ function atualizarTabuleiro(jogador){
 
 // -Fim de Jogo e Reset
 
+function checarGameOver(jogador){
+    return jogador.tabuleiro.every(valor => valor !==null);
+}
 
+function resetarJogo(){
+    jogador.tabuleiro = Array(9).fill(null);
+    jogador.pontosTotais = 0;
+    oponente.tabuleiro = Array(9).fill(null);
+    oponente.pontosTotais = 0;
+    jogadorAtual = jogador;
+    atualizarInterface();
+}
 
 
