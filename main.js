@@ -1,6 +1,14 @@
+let pontosC1 = 0;
+let pontosC2 = 0;
+let pontosC3 = 0;
+let pontosCO1 = 0;
+let pontosCO2 = 0;
+let pontosCO3 = 0;
+
 // Rodada do Jogador
 
 let jogadorAtual = "jogador";
+
 
 // Rolagem de Dado
 
@@ -56,9 +64,11 @@ function escolherColuna(coluna) {
 }
 document.getElementById('rodarDado').addEventListener('click', rolarDado);
 
+jogadorAtual = "oponente";
+
 // Rodada do Oponente
 
-if (jogadorAtual === oponente){
+if (jogadorAtual === "oponente"){
     alert('Vez do oponente!');
     let rolagemOponete = rolarDadoOpo()
     alert ('O oponente rolou no dado: ',rolagemOponete);
