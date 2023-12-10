@@ -34,8 +34,6 @@ function rolarDado() {
 
         let colunaOponente = Math.floor(Math.random() * 3) + 1;
         escolherColuna(colunaOponente);
-
-        jogadorAtual = "jogador";
     }
 }
 
@@ -69,16 +67,26 @@ function escolherColuna(coluna) {
     }
 
     // Remover os ouvintes de evento após escolher a coluna
-    if (jogadorAtual === "jogador") {
-        document.getElementById('C1').removeEventListener('click', function() {
-            escolherColuna(1);
-        });
-        document.getElementById('C2').removeEventListener('click', function() {
-            escolherColuna(2);
-        });
-        document.getElementById('C3').removeEventListener('click', function() {
-            escolherColuna(3);
-        });
+    document.getElementById('C1').removeEventListener('click', function() {
+        escolherColuna(1);
+    });
+    document.getElementById('C2').removeEventListener('click', function() {
+        escolherColuna(2);
+    });
+    document.getElementById('C3').removeEventListener('click', function() {
+        escolherColuna(3);
+    });
+
+    // Atualiza as divs de pontos no HTML
+    alert(`Pontos da coluna ${coluna}: ${pontos}`);
+
+    // Alterna entre jogador e oponente
+    jogadorAtual = jogadorAtual === "jogador" ? "oponente" : "jogador";
+    if (jogadorAtual === "oponente") {
+        alert('Vez do oponente!');
+        setTimeout(() => rolarDado(), 1000); // Adiciona um pequeno atraso antes da jogada do oponente
+    } else {
+        alert('Sua vez, role um dado');
     }
 }
 
@@ -105,6 +113,7 @@ function atualizarPontos(idElemento, pontos) {
 }
 
 document.getElementById('rodarDado').addEventListener('click', rolarDado);
+
 
 /// Código com erro
 
