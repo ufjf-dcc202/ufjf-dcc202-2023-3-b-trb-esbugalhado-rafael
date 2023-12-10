@@ -68,45 +68,45 @@ function escolherColuna(coluna) {
             }
         } 
     } else if (jogadorAtual === "oponente") {
-        if (document.getElementById('C-1').addEventListener('click', )){
-            if (document.getElementById('C1Q1').innerText === ""){
-                document.getElementById('C1Q1').innerText = resultadoDado;
+        if (rColuna === 1){
+            if (document.getElementById('CO1Q1').innerText === ""){
+                document.getElementById('CO1Q1').innerText = resultadoDado;
                 pontosC1+= resultadosDado;
-            } else if (document.getElementById('C1Q2').innerText === ""){
-                document.getElementById('C1Q2').innerText = resultadoDado;
+            } else if (document.getElementById('CO1Q2').innerText === ""){
+                document.getElementById('CO1Q2').innerText = resultadoDado;
                 pontosC1+= resultadosDado;
-            } else if (document.getElementById('C1Q3').innerText !== ""){
-                document.getElementById('C1Q3').innerText = resultadoDado;
-                pontosC1+= resultadosDado;
-            } else {
-                alert('Coluna cheia, escolha outra coluna');
-                escolherColuna();
-            }
-        }
-        if (document.getElementById('C-2').addEventListener('click', )){
-            if (document.getElementById('C2Q1').innerText === ""){
-                document.getElementById('C2Q1').innerText = resultadoDado;
-                pontosC1+= resultadosDado;
-            } else if (document.getElementById('C2Q2').innerText === ""){
-                document.getElementById('C2Q2').innerText = resultadoDado;
-                pontosC1+= resultadosDado;
-            } else if (document.getElementById('C2Q3').innerText !== ""){
-                document.getElementById('C2Q3').innerText = resultadoDado;
+            } else if (document.getElementById('CO1Q3').innerText !== ""){
+                document.getElementById('CO1Q3').innerText = resultadoDado;
                 pontosC1+= resultadosDado;
             } else {
                 alert('Coluna cheia, escolha outra coluna');
                 escolherColuna();
             }
         }
-        if (document.getElementById('C-3').addEventListener('click', )){
-            if (document.getElementById('C3Q1').innerText === ""){
-                document.getElementById('C3Q1').innerText = resultadoDado;
+        if (rColuna === 2){
+            if (document.getElementById('CO2Q1').innerText === ""){
+                document.getElementById('CO2Q1').innerText = resultadoDado;
                 pontosC1+= resultadosDado;
-            } else if (document.getElementById('C3Q2').innerText === ""){
-                document.getElementById('C3Q2').innerText = resultadoDado;
+            } else if (document.getElementById('CO2Q2').innerText === ""){
+                document.getElementById('CO2Q2').innerText = resultadoDado;
                 pontosC1+= resultadosDado;
-            } else if (document.getElementById('C3Q3').innerText !== ""){
-                document.getElementById('C3Q3').innerText = resultadoDado;
+            } else if (document.getElementById('CO2Q3').innerText !== ""){
+                document.getElementById('CO2Q3').innerText = resultadoDado;
+                pontosC1+= resultadosDado;
+            } else {
+                alert('Coluna cheia, escolha outra coluna');
+                escolherColuna();
+            }
+        }
+        if (rColuna === 3){
+            if (document.getElementById('CO3Q1').innerText === ""){
+                document.getElementById('CO3Q1').innerText = resultadoDado;
+                pontosC1+= resultadosDado;
+            } else if (document.getElementById('CO3Q2').innerText === ""){
+                document.getElementById('CO3Q2').innerText = resultadoDado;
+                pontosC1+= resultadosDado;
+            } else if (document.getElementById('CO3Q3').innerText !== ""){
+                document.getElementById('CO3Q3').innerText = resultadoDado;
                 pontosC1+= resultadosDado;
             } else {
                 alert('Coluna cheia, escolha outra coluna');
@@ -121,6 +121,7 @@ document.getElementById('rodarDado').addEventListener('click', rolarDado);
 
 if (jogadorAtual === "oponente") {
     rolarDadoOpo();
+    randomizarColuna();
     escolherColuna();
 }
 
@@ -128,6 +129,10 @@ function rolarDadoOpo() {
     resultadoDado = Math.floor(Math.random() * 6) + 1;
     console.log('O oponente rolou no dado:', resultadoDado);
     return resultadoDado;
+}
+
+function randomizarColuna (){
+     let rColuna = Math.floor(Math.random() * 3) + 1;
 }
 
 
