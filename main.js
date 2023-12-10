@@ -1,26 +1,28 @@
 // Rodada do Jogador
 
-const jogadorAtual = jogador;
+let jogadorAtual = "jogador";
 
 // Rolagem de Dado
 
 let resultadoDado = 0;
+alert ('Sua vez, role um dado');
 
 function rolarDado(){
     resultadoDado = Math.floor(Math.random() * 6) + 1;
-    console.log(jogadorAtual+' rolou no dado:', resultadoDado);
+    console.log('Você rolou no dado:', resultadoDado);
+    if (jogadorAtual === "jogador") {
+        alert(`Você rolou um ${resultadoDado}. Escolha uma coluna para colocar o valor.`);
 
-    alert(`Você rolou um ${resultadoDado}. Escolha uma coluna para colocar o valor.`);
-
-    document.getElementById('C1').addEventListener('click', function() {
-        escolherColuna(1);
-    });
-    document.getElementById('C2').addEventListener('click', function() {
-        escolherColuna(2);
-    });
-    document.getElementById('C3').addEventListener('click', function() {
-        escolherColuna(3);
-    });
+        document.getElementById('C1').addEventListener('click', function() {
+            escolherColuna(1);
+        });
+        document.getElementById('C2').addEventListener('click', function() {
+            escolherColuna(2);
+        });
+        document.getElementById('C3').addEventListener('click', function() {
+            escolherColuna(3);
+        });
+    }  
 }
 
 function escolherColuna(coluna) {
@@ -45,7 +47,6 @@ function escolherColuna(coluna) {
             });
 
             // Troca para o oponente
-            jogadorAtual = "oponente";
             return;
         }
     }
@@ -56,4 +57,18 @@ function escolherColuna(coluna) {
 document.getElementById('rodarDado').addEventListener('click', rolarDado);
 
 // Rodada do Oponente
+
+if (jogadorAtual === oponente){
+    alert('Vez do oponente!');
+    let rolagemOponete = rolarDadoOpo()
+    alert ('O oponente rolou no dado: ',rolagemOponete);
+    let colunaOponente = Math.floor(Math.random() * 3) + 1;
+    escolherColuna(colunaOponente);
+    jogadorAtual = "jogador";
+}
+
+function rolarDadoOpo {
+    resultadoDado = Math.floor(Math.random() * 6) + 1;
+    console.log('O oponente rolou no dado:', resultadoDado);
+}
 
