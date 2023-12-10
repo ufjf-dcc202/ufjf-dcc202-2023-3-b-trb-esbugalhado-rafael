@@ -38,32 +38,51 @@ function rolarDado(){
 function escolherColuna(coluna) {
     let colunaId = "C" + coluna;
 
-    // Encontrar o primeiro espaço vazio na coluna
+    // Encontrar os dados na coluna
     let quadradosColuna = document.getElementById(colunaId).getElementsByClassName('quadrado');
+    let dadosColuna = [];
     for (let i = 0; i < quadradosColuna.length; i++) {
-        if (!quadradosColuna[i].innerText.trim()) {
-            // Encontrou um espaço vazio, armazenar o resultado do dado aqui
-            quadradosColuna[i].innerText = resultadoDado;
-
-            // Remover os ouvintes de evento após escolher a coluna
-            document.getElementById('C1').removeEventListener('click', function() {
-                escolherColuna(1);
-            });
-            document.getElementById('C2').removeEventListener('click', function() {
-                escolherColuna(2);
-            });
-            document.getElementById('C3').removeEventListener('click', function() {
-                escolherColuna(3);
-            });
-
-            // Troca para o oponente
-            return;
+        if (quadradosColuna[i].innerText.trim()) {
+            dadosColuna.push(parseInt(quadradosColuna[i].innerText.trim()));
         }
     }
 
-    // Se a coluna estiver completa, mostra mensagem pedindo para escolher outra coluna
-    alert('Coluna completa. Escolha outra coluna.');
+    // Calcula os pontos da coluna
+    let pontos = 0;
+    pontos = calcularPontosColuna(dadosColuna, pontos);
+
+    // Armazena os pontos nas variáveis correspondentes
+    if (jogadorAtual === "jogador") {
+        if (coluna === 1) pontosC1 = pontos;
+        else if (coluna === 2) pontosC2 = pontos;
+        else if (coluna === 3) pontosC3 = pontos;
+
+        // Atualiza os pontos totais do jogador
+        pontosJogador = pontosC1 + pontosC2 + pontosC3;
+    } else {
+        if (coluna === 1) pontosCO1 = pontos;
+        else if (coluna === 2) pontosCO2 = pontos;
+        else if (coluna === 3) pontosCO3 = pontos;
+
+        // Atualiza os pontos totais do oponente
+        pontosOponente = pontosCO1 + pontosCO2 + pontosCO3;
+    }
+
+    // Remover os ouvintes de evento após escolher a coluna
+    if (jogadorAtual === "jogador") {
+        document.getElementById('C1').removeEventListener('click', function() {
+            escolherColuna(1);
+        });
+        document.getElementById('C2').removeEventListener('click', function() {
+            escolherColuna(2);
+        });
+        document.getElementById('C3').removeEventListener('click', function() {
+            escolherColuna(3);
+        });
+    }
 }
+
+
 document.getElementById('rodarDado').addEventListener('click', rolarDado);
 
 jogadorAtual = "oponente";
@@ -79,8 +98,23 @@ if (jogadorAtual === "oponente"){
     jogadorAtual = "jogador";
 }
 
-function rolarDadoOpo {
+function rolarDadoOpo (){
     resultadoDado = Math.floor(Math.random() * 6) + 1;
     console.log('O oponente rolou no dado:', resultadoDado);
 }
 
+// Calculando Pontos
+
+function calcularPontosColuna(coluna, pontos) {
+    // Calcula os pontos da coluna com base nas regras fornecidas
+    let ocorrencias = [0, 0, 0, 0, 0, 0];
+    for (let i = 0; i < coluna.length; i++) {
+        ocorrencias[coluna[i] - 1]++;
+    }
+
+    for (let i = 0; i < ocorrencias.length; i++) {
+        pontos += ocorrencias[i] * (i + 1);
+    }
+
+    return pontos;
+}
