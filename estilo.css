@@ -15,14 +15,19 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 5px;
+    text-align: center;
 }
 
 .coluna {
     display: inline-block;
+}
+
+.quadrado {
     width: 30px;
     height: 30px;
     border: 1px solid #000;
-    margin: 5px;
+    margin: 5px; 
+    box-sizing: border-box; 
 }
 
 #rodarDado{
