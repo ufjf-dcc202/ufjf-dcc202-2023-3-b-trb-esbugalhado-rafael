@@ -39,7 +39,7 @@ function rolarDado(){
 
 // -Colocar Dados nas Colunas
 
-function encontrarEspaco (tabuleiro, escolherColuna){
+/*function encontrarEspaco (tabuleiro, escolherColuna){
     for (let i = escolherColuna; i < tabuleiro.lenght; i+=3){
         if (tabuleiro[i] === null){
             return i;
@@ -47,18 +47,59 @@ function encontrarEspaco (tabuleiro, escolherColuna){
     }
     return -1;
 }
-
+*/
 function posicionarDado (valorDoDado, jogador) {
     let escolherColuna;
 
     do {
         escolherColuna = prompt('Seu valor é ' +valorDoDado+ '. Escolha uma coluna (1-3):') -1;
-        
-        if (escolherColuna >= 0 && escolherColuna <=2 && jogador.tabuleiro[escolherColuna] === null){
+        if (escolherColuna === 1) {
+            if (jogador.tabuleiro[0] === null) {
+                jogador.tabuleiro[0] = valorDoDado;
+                break;
+            } else if (jogador.tabuleiro[3] === null) {
+                jogador.tabuleiro[3] = valorDoDado;
+                break;
+            } else if (jogador.tabuleiro[6] === null) {
+                jogador.tabuleiro[6] = valorDoDado;
+                break;
+            } else {
+                alert('Coluna já preenchida, escolha outra');
+            }
+        } else if (escolherColuna === 2) {
+            if (jogador.tabuleiro[1] === null) {
+                jogador.tabuleiro[1] = valorDoDado;
+                break;
+            } else if (jogador.tabuleiro[4] === null) {
+                jogador.tabuleiro[4] = valorDoDado;
+                break;
+            } else if (jogador.tabuleiro[7] === null) {
+                jogador.tabuleiro[7] = valorDoDado;
+                break;
+            } else {
+                alert('Coluna já preenchida, escolha outra');
+            }
+        } else if (escolherColuna === 3) {
+            if (jogador.tabuleiro[2] === null) {
+                jogador.tabuleiro[2] = valorDoDado;
+                break;
+            } else if (jogador.tabuleiro[5] === null) {
+                jogador.tabuleiro[5] = valorDoDado;
+                break;
+            } else if (jogador.tabuleiro[8] === null) {
+                jogador.tabuleiro[8] = valorDoDado;
+                break;
+            } else {
+                alert('Coluna já preenchida, escolha outra');
+            }
+        } else if (escolherColuna <= 0 && escolherColuna >=2) {
+            alert('Escolha inválida ou coluna já preenchida. Escolha outra.');
+        }
+        /*if (escolherColuna >= 0 && escolherColuna <=2 && jogador.tabuleiro[escolherColuna] === null){
             break;
         } else {
             alert('Escolha inválida ou coluna já preenchida. Escolha outra.');
-        }   
+        }*/   
     } while (true);
 
     const espacoVazio = encontrarEspaco(jogador.tabuleiro, escolherColuna);
