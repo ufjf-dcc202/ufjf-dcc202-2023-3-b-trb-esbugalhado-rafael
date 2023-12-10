@@ -39,77 +39,43 @@ function rolarDado(){
 
 // -Colocar Dados nas Colunas
 
-/*function encontrarEspaco (tabuleiro, escolherColuna){
-    for (let i = escolherColuna; i < tabuleiro.lenght; i+=3){
-        if (tabuleiro[i] === null){
-            return i;
-        }
-    }
-    return -1;
-}
-*/
-function posicionarDado (valorDoDado, jogador) {
-    let escolherColuna;
 
-    do {
-        escolherColuna = prompt('Seu valor é ' +valorDoDado+ '. Escolha uma coluna (1-3):') -1;
+function posicionarDado (valorDoDado, jogador) {
+    const escolherColuna = prompt('Seu valor é ' +valorDoDado+ '. Escolha uma coluna (1-3):');
         if (escolherColuna === 1) {
             if (jogador.tabuleiro[0] === null) {
                 jogador.tabuleiro[0] = valorDoDado;
-                break;
             } else if (jogador.tabuleiro[3] === null) {
-                jogador.tabuleiro[3] = valorDoDado;
-                break;
+                jogador.tabuleiro[3] = valorDoDado;    
             } else if (jogador.tabuleiro[6] === null) {
-                jogador.tabuleiro[6] = valorDoDado;
-                break;
+                jogador.tabuleiro[6] = valorDoDado;   
             } else {
                 alert('Coluna já preenchida, escolha outra');
             }
         } else if (escolherColuna === 2) {
             if (jogador.tabuleiro[1] === null) {
-                jogador.tabuleiro[1] = valorDoDado;
-                break;
+                jogador.tabuleiro[1] = valorDoDado;    
             } else if (jogador.tabuleiro[4] === null) {
-                jogador.tabuleiro[4] = valorDoDado;
-                break;
+                jogador.tabuleiro[4] = valorDoDado;    
             } else if (jogador.tabuleiro[7] === null) {
-                jogador.tabuleiro[7] = valorDoDado;
-                break;
+                jogador.tabuleiro[7] = valorDoDado;   
             } else {
                 alert('Coluna já preenchida, escolha outra');
             }
         } else if (escolherColuna === 3) {
             if (jogador.tabuleiro[2] === null) {
-                jogador.tabuleiro[2] = valorDoDado;
-                break;
+                jogador.tabuleiro[2] = valorDoDado;    
             } else if (jogador.tabuleiro[5] === null) {
-                jogador.tabuleiro[5] = valorDoDado;
-                break;
+                jogador.tabuleiro[5] = valorDoDado;    
             } else if (jogador.tabuleiro[8] === null) {
-                jogador.tabuleiro[8] = valorDoDado;
-                break;
+                jogador.tabuleiro[8] = valorDoDado;   
             } else {
                 alert('Coluna já preenchida, escolha outra');
             }
         } else if (escolherColuna <= 0 && escolherColuna >=2) {
             alert('Escolha inválida ou coluna já preenchida. Escolha outra.');
         }
-        /*if (escolherColuna >= 0 && escolherColuna <=2 && jogador.tabuleiro[escolherColuna] === null){
-            break;
-        } else {
-            alert('Escolha inválida ou coluna já preenchida. Escolha outra.');
-        }*/   
-    } while (true);
 
-    const espacoVazio = encontrarEspaco(jogador.tabuleiro, escolherColuna);
-
-    if (espacoVazio === -1){
-        alert('Coluna já preenchida. Escolha outra.');
-        return;
-    }
-
-    jogador.tabuleiro[espacoVazio] = valorDoDado;
 
     oponente.tabuleiro = oponente.tabuleiro.map((valor,index) => (valor === valorDoDado && index % 3 === escolherColuna ? null : valor));
     
@@ -126,23 +92,6 @@ function posicionarDado (valorDoDado, jogador) {
 }
 
 
-/*const escolherColuna = prompt('Seu valor é ' +valorDoDado +'. Escolha uma coluna (1-3):') - 1;
-
-    if (jogador.tabuleiro[escolherColuna] === null){
-        jogador.tabuleiro[escolherColuna] = valorDoDado;
-
-        // Remover dado do adversario
-
-        oponente.tabuleiro = oponente.tabuleiro.map(valor => (valor === valorDoDado ? null : valor));
-
-        // Atualizando pontos
-        jogador.pontosTotais += calcularPontos(jogador.tabuleiro, escolherColuna);
-        atualizarInterface();
-    } else {
-        alert('Essa coluna já foi preenchida. Escolha outra.');
-    }*/
-
-
 
 // -Bot oponente
 
@@ -150,15 +99,38 @@ function acaoDoOponente(){
     const valorDoDado = rolarDado();
     console.log('O oponente rodou no dado: '+valorDoDado);
 
-    const colunasPossiveis = oponente.tabuleiro.reduce((colunas,valor,indice) => {
-        if (valor === null) {
-            colunas.push(indice);
+    const escolherColuna2 = Math.floor(Math.random()*3)+1;
+    
+    if (escolherColuna2 === 1) {
+        if (oponente.tabuleiro[0] === null) {
+            oponente.tabuleiro[0] = valorDoDado;
+        } else if (oponente.tabuleiro[3] === null) {
+            oponente.tabuleiro[3] = valorDoDado;    
+        } else if (oponente.tabuleiro[6] === null) {
+            oponente.tabuleiro[6] = valorDoDado;   
+        } else {
+            alert('Coluna já preenchida, escolha outra');
+    }
+    } else if (escolherColuna2 === 2) {
+        if (oponente.tabuleiro[1] === null) {
+            oponente.tabuleiro[1] = valorDoDado;    
+        } else if (oponente.tabuleiro[4] === null) {
+            oponente.tabuleiro[4] = valorDoDado;    
+        } else if (oponente.tabuleiro[7] === null) {
+            oponente.tabuleiro[7] = valorDoDado;   
+        } else {
+            alert('Coluna já preenchida, escolha outra');
         }
-        return colunas;
-    }, []);
-
-    if (colunasPossiveis.lenght === 0){
-
+    } else if (escolherColuna2 === 3) {
+        if (oponente.tabuleiro[2] === null) {
+            oponente.tabuleiro[2] = valorDoDado;    
+        } else if (oponente.tabuleiro[5] === null) {
+            oponente.tabuleiro[5] = valorDoDado;    
+        } else if (oponente.tabuleiro[8] === null) {
+            oponente.tabuleiro[8] = valorDoDado;   
+        } else {
+            alert('Coluna já preenchida, escolha outra');
+        }
     }
 
     if (checarGameOver(oponente)){
@@ -241,5 +213,4 @@ function resetarJogo(){
     jogadorAtual = jogador;
     atualizarInterface();
 }
-
 
