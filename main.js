@@ -80,6 +80,9 @@ function escolherColuna(coluna) {
             escolherColuna(3);
         });
     }
+
+    // Atualiza as divs de pontos no HTML
+    atualizarPontos();
 }
 
 
@@ -117,4 +120,10 @@ function calcularPontosColuna(coluna, pontos) {
     }
 
     return pontos;
+}
+
+function atualizarPontos() {
+    // Atualiza as divs de pontos no HTML
+    document.getElementById('pontosJogador').innerText = `Pontos: ${pontosJogador}`;
+    document.getElementById('pontosOponente').innerText = `Pontos: ${pontosOponente}`;
 }
