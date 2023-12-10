@@ -4,6 +4,8 @@ let pontosC3 = 0;
 let pontosCO1 = 0;
 let pontosCO2 = 0;
 let pontosCO3 = 0;
+let pontosJogador = 0;
+let pontosOponente = 0;
 
 // Rodada do Jogador
 
