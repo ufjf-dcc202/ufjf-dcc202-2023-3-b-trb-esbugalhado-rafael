@@ -1,6 +1,6 @@
 body {
     display: flex;
-    justify-content: center;
+    justify-content: space-around; /* Alterado para space-around */
     align-items: center;
     height: 100vh;
     margin: 0;
@@ -26,9 +26,15 @@ body {
   
   #tabuleiro-jogador {
     border: 2px solid blue;
+    text-align: left; /* Adiciona para alinhar à esquerda */
   }
   
   #tabuleiro-oponente {
     border: 2px solid red;
+    text-align: right; /* Adiciona para alinhar à direita */
+  }
+  
+  .pontuacao {
+    margin: 0; /* Removi o espaço padrão entre o parágrafo e o elemento anterior */
   }
   
