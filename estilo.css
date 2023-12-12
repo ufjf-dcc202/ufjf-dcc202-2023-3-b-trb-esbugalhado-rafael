@@ -1,9 +1,20 @@
 body {
     display: flex;
-    justify-content: space-around; /* Alterado para space-around */
+    justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: column; /* Alterado para space-between */
+    align-items: center;
+    width: 70%; /* Ajuste a largura conforme necessário */
+  }
+  
+  .info, .tabuleiro {
+    margin: 10px; /* Adicionado espaçamento entre os elementos */
   }
   
   .tabuleiro {
@@ -26,15 +37,28 @@ body {
   
   #tabuleiro-jogador {
     border: 2px solid blue;
-    text-align: left; /* Adiciona para alinhar à esquerda */
   }
   
   #tabuleiro-oponente {
     border: 2px solid red;
-    text-align: right; /* Adiciona para alinhar à direita */
   }
   
   .pontuacao {
-    margin: 0; /* Removi o espaço padrão entre o parágrafo e o elemento anterior */
+    margin: 0;
   }
   
+  .titulo {
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-left: 350px;
+  }
+
+  .pontuacao-fileira {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    font-weight: bold;
+  }

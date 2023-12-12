@@ -9,17 +9,31 @@
 <body>
     <main>
         <h1 class="titulo">Jogo da Bugalha</h1>
-        <div>
-            <h2>Jogador</h2>
-            <p class="pontuacao" id="pontuacao-jogador">Pontos: </p>
-            <div class="tabuleiro" id="tabuleiro-jogador"></div>
-        </div>
-        <div>
-            <h2>Oponente</h2>
-            <p class="pontuacao" id="pontuacao-oponente">Pontos: </p>
+        <div class="container">
+            <div class="info" id="info-jogador">
+              <h2>Jogador</h2>
+              <p class="pontuacao" id="pontuacao-jogador">Pontos: 0</p>
+            </div>
+        
+            <div class="tabuleiro" id="tabuleiro-jogador">
+                <div class="pontuacao-fileira" id="pontuacao-fileira-jogador-0">0</div>
+                <div class="pontuacao-fileira" id="pontuacao-fileira-jogador-1">0</div>
+                <div class="pontuacao-fileira" id="pontuacao-fileira-jogador-2">0</div>
+            </div>
+            <div class="tabuleiro" id="tabuleiro-oponente">
+                <div class="pontuacao-fileira" id="pontuacao-fileira-oponente-0">0</div>
+                <div class="pontuacao-fileira" id="pontuacao-fileira-oponente-1">0</div>
+                <div class="pontuacao-fileira" id="pontuacao-fileira-oponente-2">0</div>
+            </div>
+        
+            <div class="info" id="info-oponente">
+              <h2>Oponente</h2>
+              <p class="pontuacao" id="pontuacao-oponente">Pontos: 0</p>
+            </div>
+        
             <div class="tabuleiro" id="tabuleiro-oponente"></div>
-        </div>
-    </main>
+          </div>
+        
     </main>
     <script src="main.js"></script>
 </body>
