@@ -146,4 +146,6 @@ function atualizaSomaTxt(indice, somaTxt, colunas, valorSoma){
     valorSoma[indice] = soma;
     somaTxt[indice].textContent = soma;
 }
+
+
 export {}
