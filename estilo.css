@@ -89,6 +89,11 @@ body {
     margin-bottom: 10px;
   }
 
+  .container-btn {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
   #rolar-dado {
     font-size: 16px;
     cursor: pointer;
