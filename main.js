@@ -20,5 +20,6 @@ function turnoOponente(){
 }
 
 function rodarDado(){
-    
+    let resultado = Math.floor(Math.random()*6)+1;
+    return resultado;
 }
