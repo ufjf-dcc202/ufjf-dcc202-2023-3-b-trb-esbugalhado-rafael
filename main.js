@@ -61,3 +61,37 @@ function encontrarEspaço(coluna){
     }
     colunaCheia = false;
 }
+
+function checarGameOver(){
+    if (jogadorAtual === jogador) {
+        var colunas = document.getElementById('coluna-jogador');
+
+        for (var i = 0; i < colunas.length; i++) {
+            var elementos = colunas[i].getElementsByTagName('div');
+
+            for (var j = 0; j < elementos.length; j++) {
+                if (elementos[j].innerText.trim() === ""){
+                    console.log("A coluna " + (i+1) + " não está cheia.");
+                    return false;
+                }
+            }
+        }
+        console.log("Todas as colunas do " + jogadorAtual + " estão cheias.");
+        return true;
+    } else {
+        var colunas = document.getElementById('coluna-oponente');
+
+        for (var i = 0; i < colunas.length; i++) {
+            var elementos = colunas[i].getElementsByTagName('div');
+
+            for (var j = 0; j < elementos.length; j++) {
+                if (elementos[j].innerText.trim() === ""){
+                    console.log("A coluna " + (i+1) + " do oponente não está cheia.");
+                    return false;
+                }
+            }
+        }
+        console.log("Todas as colunas do " + jogadorAtual + " estão cheias.");
+        return true;
+    }
+}
