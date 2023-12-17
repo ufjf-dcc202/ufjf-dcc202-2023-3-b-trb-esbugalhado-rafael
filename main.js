@@ -16,7 +16,6 @@ let colunaCheia = false;
 
 // - - - Jogo
 
-turnoJogador()
 if(jogadorAtual === jogador){
     turnoJogador();
 } else {
@@ -72,7 +71,7 @@ function checarGameOver(){
         var colunas = document.getElementById('coluna-jogador');
 
         for (var i = 0; i < colunas.length; i++) {
-            var elementos = colunas[i].getElementsById('celula');
+            var elementos = colunas[i].getElementsByTagName('div');
 
             for (var j = 0; j < elementos.length; j++) {
                 if (elementos[j].innerText.trim() === ""){
@@ -87,7 +86,7 @@ function checarGameOver(){
         var colunas = document.getElementById('coluna-oponente');
 
         for (var i = 0; i < colunas.length; i++) {
-            var elementos = colunas[i].getElementsById('celula');
+            var elementos = colunas[i].getElementsByTagName('div');
 
             for (var j = 0; j < elementos.length; j++) {
                 if (elementos[j].innerText.trim() === ""){
