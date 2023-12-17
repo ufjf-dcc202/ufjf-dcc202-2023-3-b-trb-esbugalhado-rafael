@@ -18,11 +18,12 @@ let gameOver = false;
 
 function turnoJogador(){
     document.getElementById('rolar-dado').addEventListener('click', rodarDado);
-
+    console.log('Valor do dado do jogador:' + valorDado);
 }
 
 function turnoOponente(){ 
     valorDadoOponente = Math.floor(Math.random()*6)+1;
+    console.log('Valor do dado do oponente:' + valorDadoOponente)
 }
 
 function rodarDado(){
