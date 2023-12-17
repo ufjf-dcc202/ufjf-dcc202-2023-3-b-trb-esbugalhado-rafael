@@ -9,28 +9,26 @@ let valorPosição;
 let valorColuna;
 let valorTotalJogador;
 let valorTotalOponente;
-let gameOver;
+let gameOver = false;
 let colunaEscolhida;
 let colunaCheia = false;
 
 
 // - - - Jogo
 
-gameOver = checarGameOver();
-while (gameOver === false){
-    if (jogadorAtual === jogador){
-        turnoJogador();
-    } else {
-        turnoOponente();
-    }
+turnoJogador()
+if(jogadorAtual === jogador){
+    turnoJogador();
+} else {
+    turnoOponente();
 }
 
 // - - - Funções
 
 function turnoJogador(){
-    document.getElementById('rolar-dado').addEventListener('click', rodarDado);
+    valorDado = document.getElementById('rolar-dado').addEventListener('click', rodarDado);
     console.log('Valor do dado do jogador:' + valorDado);
-    document.getElementsById('coluna-jogador').addEventListener('click', encontrarEspaço);
+    document.getElementById('coluna-jogador').addEventListener('click', encontrarEspaço);
 
     jogadorAtual = oponente;
 }
@@ -53,7 +51,7 @@ function rodarDado(){
 }
 
 function encontrarEspaço(coluna){
-    var elementos = coluna.getElementById('div');
+    var elementos = coluna.getElementByTagName('div');
     while (colunaCheia === false) {
         for (var i = 0; i < elementos.length; i++) {
             if (elementos[i].innerText.trim() === ""){
