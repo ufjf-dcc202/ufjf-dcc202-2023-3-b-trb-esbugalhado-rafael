@@ -9,14 +9,21 @@ let valorPosição;
 let valorColuna;
 let valorTotalJogador;
 let valorTotalOponente;
-let gameOver = false;
+let gameOver;
 let colunaEscolhida;
 let colunaCheia = false;
 
 
 // - - - Jogo
 
-
+gameOver = checarGameOver();
+while (gameOver === false){
+    if (jogadorAtual === jogador){
+        turnoJogador();
+    } else {
+        turnoOponente();
+    }
+}
 
 // - - - Funções
 
