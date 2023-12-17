@@ -10,6 +10,7 @@ let valorColuna;
 let valorTotalJogador;
 let valorTotalOponente;
 let gameOver = false;
+let colunaEscolhida;
 
 // - - - Jogo
 
@@ -29,5 +30,22 @@ function turnoOponente(){
 function rodarDado(){
     let resultado = Math.floor(Math.random()*6)+1;
     document.getElementById('valor-dado').innerText = resultado;
+    valorDado = resultado;
     return resultado;
+}
+
+function encontrarEspaço(coluna){
+    var elementos = coluna.getElementById('div');
+
+    for (var i = 0; i < elementos.length; i++) {
+        if (elementos[i].innerText.trim() === ""){
+            elementos[i].innerText = valorDado;
+            console.log("Resultado armazenado na coluna: " + coluna.innerText);
+            return;
+        } else {
+            console.log("Nenhum elemento vazio encontrado na coluna");
+            alert("Coluna cheia, escolha outra");
+        }
+    }
+
 }
