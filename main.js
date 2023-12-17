@@ -2,7 +2,7 @@
 
 let jogador;
 let oponente;
-let jogadorAtual;
+let jogadorAtual = jogador;
 let valorDado;
 let valorDadoOponente;
 let valorPosição;
@@ -17,17 +17,25 @@ let colunaCheia = false;
 // - - - Jogo
 
 
+
 // - - - Funções
 
 function turnoJogador(){
     document.getElementById('rolar-dado').addEventListener('click', rodarDado);
     console.log('Valor do dado do jogador:' + valorDado);
-    
+    document.getElementsById('coluna-jogador').addEventListener('click', encontrarEspaço);
+
+    jogadorAtual = oponente;
 }
 
 function turnoOponente(){ 
     valorDadoOponente = Math.floor(Math.random()*6)+1;
     console.log('Valor do dado do oponente:' + valorDadoOponente)
+    var numeroAleatorio = Math.floor(Math.random()*3);
+    var colunaSelecionada = document.getElementsById('coluna-oponente')[numeroAleatorio];
+    encontrarEspaço(colunaSelecionada);
+
+    jogadorAtual = jogador;
 }
 
 function rodarDado(){
