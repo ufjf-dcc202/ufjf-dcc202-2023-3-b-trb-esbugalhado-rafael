@@ -1,21 +1,22 @@
 // - - - Variaveis
 
-let jogador;
+let jogador;  
 let oponente;
 let jogadorAtual = jogador;
-let valorDado;
-let valorDadoOponente;
+let valorDado = 0; 
+let valorDadoOponente;  
 let valorPosição;
-let valorColuna;
+let valorColuna;   
 let valorTotalJogador;
 let valorTotalOponente;
-let gameOver = false;
-let colunaEscolhida;
+let gameOver = false;  
+let colunaEscolhida; 
 let colunaCheia = false;
 
 
 // - - - Jogo
 
+console.log("Atual:" + jogadorAtual);
 if(jogadorAtual === jogador){
     turnoJogador();
 } else {
@@ -25,14 +26,16 @@ if(jogadorAtual === jogador){
 // - - - Funções
 
 function turnoJogador(){
+    jogadorAtual = jogador;
     valorDado = document.getElementById('rolar-dado').addEventListener('click', rodarDado);
-    console.log('Valor do dado do jogador:' + valorDado);
-    document.getElementById('coluna-jogador').addEventListener('click', encontrarEspaço);
-
+    if (valorDado !== 0){
+        console.log('Valor do dado do jogador:' + valorDado);
+    }
     jogadorAtual = oponente;
 }
 
 function turnoOponente(){ 
+    jogadorAtual = oponente;
     valorDadoOponente = Math.floor(Math.random()*6)+1;
     console.log('Valor do dado do oponente:' + valorDadoOponente)
     var numeroAleatorio = Math.floor(Math.random()*3);
@@ -49,13 +52,13 @@ function rodarDado(){
     return resultado;
 }
 
-function encontrarEspaço(coluna){
-    var elementos = coluna.getElementByTagName('div');
+function encontrarEspaço(){
+    var elementos = document.getElementsByClassName('celula');
     while (colunaCheia === false) {
-        for (var i = 0; i < elementos.length; i++) {
+        for (var i = 0; i < 3; i++) {
             if (elementos[i].innerText.trim() === ""){
-                elementos[i].innerText = valorDado;
-                console.log("Resultado armazenado na coluna: " + coluna.innerText);
+                elementos[i].innerText = document.getElementById('valor-dado').innerText;
+                console.log("Resultado armazenado na coluna: " + elementos[i].innerText);
                 return;
             }     
         }
